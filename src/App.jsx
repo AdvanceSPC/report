@@ -10,7 +10,7 @@ function App() {
   const [to, setTo] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:3001/interacciones', {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/interacciones`, {
       params: { from, to }
     });
     setData(res.data);
@@ -26,18 +26,18 @@ function App() {
 
   return (
 
-    
+
     <div className="p-6 max-w-screen-xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">📊 Interacciones</h1>
-      
+
       <div className="flex items-center gap-4 mb-6">
         <div>
           <label>Desde:</label>
-          <input type="date" value={from} onChange={e => setFrom(e.target.value)} className="border p-2 rounded ml-2"/>
+          <input type="date" value={from} onChange={e => setFrom(e.target.value)} className="border p-2 rounded ml-2" />
         </div>
         <div>
           <label>Hasta:</label>
-          <input type="date" value={to} onChange={e => setTo(e.target.value)} className="border p-2 rounded ml-2"/>
+          <input type="date" value={to} onChange={e => setTo(e.target.value)} className="border p-2 rounded ml-2" />
         </div>
         <button onClick={fetchData} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           Filtrar
